@@ -23,18 +23,18 @@ exec("./test-internet.sh", (err, stdout, stderr) => {
 		}
 	}());
 
-    var conn = getConnection();
+	var conn = getConnection();
 
-     new Promise((resolve, reject) => {
-        conn.query("Insert into InetTest (test_time, result) values (now(), '" + resultChar + "')", (err, results) => {
-            if (err) reject(err);
-            else resolve(results);
-        })
-    }).catch(err => {
-        console.log("Error: ", err)
-    }).then(() => {
-        conn.end()
-    })
+	new Promise((resolve, reject) => {
+		conn.query("Insert into InetTest (test_time, result) values (now(), '" + resultChar + "')", (err, results) => {
+			if (err) reject(err);
+			else resolve(results);
+		})
+	}).catch(err => {
+		console.log("Error: ", err)
+	}).then(() => {
+		conn.end()
+	})
 
 })
 
